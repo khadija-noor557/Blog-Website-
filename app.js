@@ -15,69 +15,155 @@ const client = createClient(supabaseUrl, supabaseKey)
 
 console.log(client);
 
-const signUpForm = document.querySelector("#signupForm")
+// const signUpForm = document.querySelector("#signupForm")
+
+// signUpForm.addEventListener("submit", async (e) => {
+//     e.preventDefault()
+
+//     try {
+//         const formData = new FormData(signUpForm)
+
+//          for (const [key, value] of formData.entries()) {
+//         console.log(key, value);
+//     }
+
+
+//         let emptyField = false;
+//         const inputs = document.querySelectorAll("input")
+//         inputs.forEach((input) => {
+//             if (input.value === "") {
+//                 input.style.border = "2px solid red"
+//                 emptyField = true;
+//             }
+//         })
+
+//         if (emptyField) {
+//             return
+//         }
+
+//         const data = Object.fromEntries(formData)
+
+//         console.log("FORM DATA:", data);
+
+//         const { name, email, password, repeatpassword } = data
+
+
+//         const { data: signUpData, error } = await client.auth.signUp({
+//             email,
+//             password,
+//         });
+
+//         if (error) {
+//     console.log("Signup Error:", error.message);
+//     alert(error.message);
+//     return;
+// }
+
+// console.log("Signup successful:", signUpData);
+
+
+//         const id = signUpData?.user?.id
+//         console.log(id);
+
+//         // database insertion
+//         const { error: databaseError } = await client
+//             .from('blog_data')
+//             .insert({
+//                 name,
+
+//             })
+//         console.log(databaseError)
+
+//         if (signUpData) {
+//             console.log(signUpData);
+//         }
+//         else {
+//             console.log(error.message)
+//         }
+//     }
+//     catch (error) {
+//         console.log(error)
+//     }
+// })
+
+// const inputs = document.querySelectorAll("input")
+// inputs.forEach((input) => {
+//     input.addEventListener("input", () => {
+//         if (input.value !== "") {
+//             input.style.border = ""
+
+//         }
+//     })
+
+// })
+
+
+const signUpForm = document.querySelector("#signupForm");
 
 signUpForm.addEventListener("submit", async (e) => {
-    e.preventDefault()
-    try {
-        const formData = new FormData(signUpForm)
+    e.preventDefault();
 
 
-        let emptyField = false;
-        const inputs = document.querySelectorAll("input")
-        inputs.forEach((input) => {
-            if (input.value === "") {
-                input.style.border = "2px solid red"
-                emptyField = true;
-            }
-        })
+    const name = document.querySelector("#name").value;
+    const email = document.querySelector("#email").value;
+    const password = document.querySelector("#password").value;
+    const repeatpassword = document.querySelector("#repeatpassword").value;
 
-        if (emptyField) {
-            return
+    let emptyField = false;
+    const inputs = document.querySelectorAll("input")
+    inputs.forEach((input) => {
+        if (input.value === "") {
+            input.style.border = "2px solid red"
+            emptyField = true;
         }
+    })
 
-        const data = Object.fromEntries(formData)
+    if (emptyField) {
+        return
+    }
 
-        const { name, email, password, repeatpassword } = data
+    if (password !== repeatpassword) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Password do not match!",
+            footer: "<a href=\"#\">Why do I have this issue?</a>"
+        });
+        return;
+    }
 
 
-        const { data: signUpData, error } = await client.auth.signUp({
-            email,
-            password,
+    // Authentication
+    const { data, error } = await client.auth.signUp({
+        email: email,
+        password: password
+    });
+
+    if (error) {
+        console.log(error.message);
+        return;
+    }
+
+    // Database Insertions
+    const { error: databaseError } = await client
+        .from("blog_data")
+        .insert({
+            name: name
         });
 
-        if (error) {
-    console.log("Signup Error:", error.message);
-    alert(error.message);
-    return;
-}
-
-console.log("Signup successful:", signUpData);
-
-
-        const id = signUpData?.user?.id
-        console.log(id);
-
-        // database insertion
-        const { error: databaseError } = await client
-            .from('blog_data')
-            .insert({
-                name,
-
-            })
-        console.log(databaseError)
-
-        if (signUpData) {
-            console.log(signUpData);
-        }
-        else {
-            console.log(error.message)
-        }
+    if (databaseError) {
+        console.log(databaseError.message);
+        return;
     }
-    catch (error) {
-        console.log(error)
-    }
-})
+
+    Swal.fire({
+        title: "Registration successful!",
+        icon: "success",
+        draggable: true
+    });
+    window.location.href = "/blog.html";
+});
+
 
 const inputs = document.querySelectorAll("input")
 inputs.forEach((input) => {
