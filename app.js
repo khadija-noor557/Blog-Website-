@@ -97,71 +97,80 @@ console.log(client);
 
 // })
 
+const params = new URLSearchParams(window.location.search);
+const emailFromLogin = params.get("email");
+if (emailFromLogin) {
+    document.querySelector("#email").value = emailFromLogin; // match your input's id/name
+}
 
 const signUpForm = document.querySelector("#signupForm");
 
 signUpForm.addEventListener("submit", async (e) => {
     e.preventDefault();
+    try {
+        const name = document.querySelector("#name").value;
+        const email = document.querySelector("#email").value;
+        const password = document.querySelector("#password").value;
+        const repeatpassword = document.querySelector("#repeatpassword").value;
 
 
-    const name = document.querySelector("#name").value;
-    const email = document.querySelector("#email").value;
-    const password = document.querySelector("#password").value;
-    const repeatpassword = document.querySelector("#repeatpassword").value;
 
-    let emptyField = false;
-    const inputs = document.querySelectorAll("input")
-    inputs.forEach((input) => {
-        if (input.value === "") {
-            input.style.border = "2px solid red"
-            emptyField = true;
+        let emptyField = false;
+        const inputs = document.querySelectorAll("input")
+        inputs.forEach((input) => {
+            if (input.value === "") {
+                input.style.border = "2px solid red"
+                emptyField = true;
+            }
+        })
+
+        if (emptyField) return;
+
+        if (password !== repeatpassword) {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: "Password do not match!",
+                
+            });
+            return;
         }
-    })
-
-    if (emptyField) {
-        return
-    }
-
-    if (password !== repeatpassword) {
-        Swal.fire({
-            icon: "error",
-            title: "Oops...",
-            text: "Password do not match!",
-            footer: "<a href=\"#\">Why do I have this issue?</a>"
-        });
-        return;
-    }
 
 
-    // Authentication
-    const { data, error } = await client.auth.signUp({
-        email: email,
-        password: password
-    });
-
-    if (error) {
-        console.log(error.message);
-        return;
-    }
-
-    // Database Insertions
-    const { error: databaseError } = await client
-        .from("blog_data")
-        .insert({
-            name: name
+        // Authentication
+        const { data, error } = await client.auth.signUp({
+            email: email,
+            password: password
         });
 
-    if (databaseError) {
-        console.log(databaseError.message);
-        return;
+        if (error) {
+            console.log(error.message);
+            return;
+        }
+
+        // Database Insertions
+        const { error: databaseError } = await client
+            .from("blog_data")
+            .insert({
+                name: name
+            });
+
+        if (databaseError) {
+            console.log(databaseError.message);
+            return;
+        }
     }
+    catch (error) {
+        console.log(error)
+    }
+
 
     Swal.fire({
         title: "Registration successful!",
         icon: "success",
         draggable: true
     });
-    window.location.href = "/blog.html";
+    window.location.href = "blogs.html";
 });
 
 
