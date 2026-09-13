@@ -10,11 +10,11 @@
   box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
 }
 
-.header .navbar-brand {
-  font-size: 24px;
-  font-weight: 700;
-  color: #6c63ff;
+.logo img {
+    height: 32px;      /* increase this — try 32-40px depending on navbar height */
+    width: auto;       /* keep aspect ratio */
 }
+
 
 .header .nav-link {
   font-size: 16px;
