@@ -170,7 +170,7 @@ signUpForm.addEventListener("submit", async (e) => {
         icon: "success",
         draggable: true
     });
-    window.location.href = "blogs.html";
+    window.location.href = "dashboard.html";
 });
 
 

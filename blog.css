@@ -1,3 +1,37 @@
+/* navbar */
+.header {
+  padding: 15px 30px;
+}
+
+.header .navbar {
+  background: #ffffff !important;
+  border-radius: 12px;
+  padding: 12px 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+    height: 32px;      /* increase this — try 32-40px depending on navbar height */
+    width: auto;       /* keep aspect ratio */
+}
+
+
+.header .nav-link {
+  font-size: 16px;
+  font-weight: 600;
+  color: #333 !important;
+  padding: 10px 18px !important;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.header .nav-link:hover {
+  color: white !important;
+  background: #6c63ff;
+}
+
+/* blog page */
+
 :root{
     --blue:#2f80c2;
     --blue-dark:#286ea8;

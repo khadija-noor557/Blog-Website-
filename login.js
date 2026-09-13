@@ -49,7 +49,7 @@ loginBtn.addEventListener("submit", async (event) => {
                 icon: "success",
                 draggable: true
             });
-            window.location.href = "blogs.html";
+            window.location.href = "dashboard.html";
             return;
         }
 
