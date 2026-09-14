@@ -26,7 +26,7 @@ fetch(navbarPath)
                 : "./pages/signup.html";
         }
     });
-    // navbar end
+// navbar end
 
 
 const supabaseUrl = "https://xmexfecjjalkhqtrlzzj.supabase.co";
@@ -47,7 +47,8 @@ if (emailFromLogin) {
 
 const signUpForm = document.querySelector("#signupForm");
 
-signUpForm.addEventListener("submit", async (e) => {
+if (signUpForm) {
+    signUpForm.addEventListener("submit", async (e) => {
     e.preventDefault();
     try {
         const name = document.querySelector("#name").value;
@@ -73,7 +74,7 @@ signUpForm.addEventListener("submit", async (e) => {
                 icon: "error",
                 title: "Oops...",
                 text: "Password do not match!",
-                
+
             });
             return;
         }
@@ -82,13 +83,21 @@ signUpForm.addEventListener("submit", async (e) => {
         // Authentication
         const { data, error } = await client.auth.signUp({
             email: email,
-            password: password
+            password: password,
+            options: {
+                data: {
+                    name: name
+                }
+            }
         });
 
         if (error) {
             console.log(error.message);
             return;
         }
+
+        console.log("USER:", data.user);
+console.log("SESSION:", data.session);
 
         // Database Insertions
         const { error: databaseError } = await client
@@ -101,19 +110,25 @@ signUpForm.addEventListener("submit", async (e) => {
             console.log(databaseError.message);
             return;
         }
+
+
+        Swal.fire({
+        title: "Registration successful!",
+        icon: "success",
+        draggable: true
+    });
+
+
     }
     catch (error) {
         console.log(error)
     }
 
 
-    Swal.fire({
-        title: "Registration successful!",
-        icon: "success",
-        draggable: true
-    });
-    window.location.href = "./pages/dashboard.html";
+    
+    window.location.href = "./dashboard.html";
 });
+}
 
 
 const inputs = document.querySelectorAll("input")

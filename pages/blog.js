@@ -7,31 +7,73 @@ const client = createClient(supabaseUrl, supabaseKey)
 
 console.log(client);
 
-const blogPage = document.querySelector("#blogPage");
 
+async function savePost(status) {
+  
+  // getuser
+  const { data: { user } } = await client.auth.getUser();
+  if (!user) {
+    window.location.href = "login.html";
+    return;
+  }
 
-async function getUserData() {
+  // ALL tags
+  const tags = [...document.querySelectorAll('.tag-chip')].map(el => el.textContent.replace('x','').trim())
 
-    const { data: { user }, error } = await client.auth.getUser();
+  // database insertion 
+  const { error } = await client
+    .from('blog_data')
+    .insert([{
+      title: document.getElementById('blogTitle').ariaValueMax.trim(),
+      category: document.getElementById('category').value,
+      publish_data: document.getElementById('publishDate').value,
+      tags,
+      allow_comments: document.getElementById('').value.checked,
+      content: document.getElementById('blogContent').value,
+      status,
+      user_id: user.id,
 
-    if (error) {
-        console.log(error.message);
-        return;
-    }
+    }])
 
-    if (user) {
-        document.querySelector("#userName").textContent = user.name;
-        document.querySelector("#userEmail").textContent = user.email;
-    }
+  if (error) {
+    console.log(error.message);
+    return;
+    
+  }
+
+  Swal.fire({
+        title: "Registration successful!",
+        icon: "success",
+        draggable: true
+    });
+
+  window.location.href = "dashboard.html";
+
 }
 
-getUserData();
+// publish button
+const publishBtn =document.querySelector("#publishBtn")
+publishBtn.addEventListener("submit",(e)=>{
+e.preventDefault()
+savePost('published')
+})
 
 
 
 
 
- // Cover image preview
+// save draft button
+const draftBtn = document.querySelector("#saveDraftBtn")
+draftBtn.addEventListener("click",(e)=>{
+  e.preventDefault()
+  savePost('draft')
+})
+
+
+
+
+
+// Cover image preview
 //   const coverInput = document.getElementById('coverInput');
 //   const coverPreview = document.getElementById('coverPreview');
 //   const coverUpload = document.querySelector('.cover-upload');
@@ -44,7 +86,7 @@ getUserData();
 //     }
 //   });
 
-  // Tag chips
+// Tag chips
 //   const tagInput = document.getElementById('tagInput');
 //   const tagsWrap = document.getElementById('tagsWrap');
 //   tagInput.addEventListener('keydown', (e) => {
@@ -58,7 +100,7 @@ getUserData();
 //     }
 //   });
 
-  // Live word count
+// Live word count
 //   const contentArea = document.getElementById('blogContent');
 //   const wordCount = document.getElementById('wordCount');
 //   contentArea.addEventListener('input', () => {

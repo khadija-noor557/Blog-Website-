@@ -40,6 +40,7 @@ loginBtn.addEventListener("submit", async (event) => {
         const { data: signInData, error: signInError } = await client.auth.signInWithPassword({
             email,
             password,
+            
         })
 
 
@@ -73,9 +74,9 @@ loginBtn.addEventListener("submit", async (event) => {
             Swal.fire({
                 icon: "error",
                 title: "Oops...",
-                text:  "Something went wrong.",
+                text: "Something went wrong.",
             });
-            
+
         }
 
 

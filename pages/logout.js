@@ -25,3 +25,24 @@ logOutBtn.addEventListener("click", async()=>{
 
     window.location.href="../index.html"
 })
+
+const userDashboard = document.querySelector("#userDashboard");
+
+async function getUserData() {
+
+    const { data: { user }, error } = await client.auth.getUser();
+
+    if (error) {
+        console.log(error.message);
+        return;
+    }
+
+    if (user) {
+        
+        document.querySelector("#userName").textContent = user.user_metadata.name;;
+        document.querySelector("#Name").textContent = user.user_metadata.name;;
+        document.querySelector("#userEmail").textContent = user.email;
+    }
+}
+
+getUserData();

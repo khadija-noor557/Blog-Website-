@@ -72,6 +72,20 @@
     border-top:1px solid var(--border);
   }
 
+  #logoutBtn {
+    padding: 10px 20px;
+    background: #DC2626;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#logoutBtn:hover {
+    background: #B91C1C;
+}
+
   /* --- Main --- */
   main{
     padding:34px 44px 60px;

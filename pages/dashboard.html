@@ -72,7 +72,7 @@
                 </a>
             </nav>
             <div class="sidebar-bottom">
-                <a href="#">
+                <a href="../index.html">
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
                         <path d="M16 17l5-5-5-5" />
@@ -88,7 +88,7 @@
         <main>
             <div class="topbar">
                 <div>
-                    <h1>Welcome back, John 👋</h1>
+                    <h1>Welcome back, <span id="userName"></span> 👋</h1>
                     <p>Here's what you've been reading lately.</p>
                 </div>
                 <div style="display:flex; align-items:center; gap:14px;">
@@ -110,12 +110,11 @@
                 </div>
             </div>
 
-            <div class="profile-card">
-                <img class="avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&q=80"
-                    alt="John">
+            <div class="profile-card" id="userDashboard">
+                
                 <div class="profile-info">
-                    <h2>John Carter</h2>
-                    <p>john@example.com · Joined March 2023</p>
+                    <h2><span id="Name"></span></h2>
+                    <p><span id="userEmail"></span></p>
                 </div>
                 <button class="edit-btn">Edit Profile</button>
             </div>
