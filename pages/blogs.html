@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>write your blog here</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- bootsrap css -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <!-- style css -->
+    <link rel="stylesheet" href="blog.css">
+</head>
+
+<body>
+
+    <div class="layout">
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div><img src="../image/zarrin-logo.svg" alt=""></div>
+
+            </div>
+            <nav>
+                <a href="dashboard.html" class="active">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="3" width="7" height="9" rx="1.5" />
+                        <rect x="14" y="3" width="7" height="5" rx="1.5" />
+                        <rect x="14" y="12" width="7" height="9" rx="1.5" />
+                        <rect x="3" y="16" width="7" height="5" rx="1.5" />
+                    </svg>
+                    Dashboard
+                </a>
+                <a href="#">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M6 3h12v18l-6-4-6 4V3z" />
+                    </svg>
+                    Saved Posts
+                </a>
+                <a href="#">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="9" />
+                        <path d="M12 7v5l3 3" />
+                    </svg>
+                    Reading History
+                </a>
+                <a href="#">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <rect x="3" y="4" width="18" height="16" rx="2" />
+                        <path d="M3 9h18" />
+                    </svg>
+                    Browse Blog
+                </a>
+                <a href="#">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 20h9" />
+                        <path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
+                    </svg>
+                    My Blogs
+                </a>
+                <a href="#">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="3" />
+                        <path
+                            d="M19.4 15a1.7 1.7 0 00.34 1.87l.06.06a2 2 0 11-2.83 2.83l-.06-.06a1.7 1.7 0 00-1.87-.34 1.7 1.7 0 00-1 1.55V21a2 2 0 01-4 0v-.09a1.7 1.7 0 00-1-1.55 1.7 1.7 0 00-1.87.34l-.06.06a2 2 0 11-2.83-2.83l.06-.06a1.7 1.7 0 00.34-1.87 1.7 1.7 0 00-1.55-1H3a2 2 0 010-4h.09a1.7 1.7 0 001.55-1 1.7 1.7 0 00-.34-1.87l-.06-.06a2 2 0 112.83-2.83l.06.06a1.7 1.7 0 001.87.34H9a1.7 1.7 0 001-1.55V3a2 2 0 014 0v.09a1.7 1.7 0 001 1.55 1.7 1.7 0 001.87-.34l.06-.06a2 2 0 112.83 2.83l-.06.06a1.7 1.7 0 00-.34 1.87V9a1.7 1.7 0 001.55 1H21a2 2 0 010 4h-.09a1.7 1.7 0 00-1.55 1z" />
+                    </svg>
+                    Settings
+                </a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a href="#">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4" />
+                        <path d="M16 17l5-5-5-5" />
+                        <path d="M21 12H9" />
+                    </svg>
+                    <a class="nav-link active" aria-current="page" href="../index.html">
+                        <button type="button" id="logoutBtn">Log Out</button></a>
+                </a>
+            </div>
+        </aside>
+
+        <!-- Main -->
+        <main>
+            <form id="blogForm">
+                <div class="topbar">
+                    <div>
+                        <h1>Write a Blog</h1>
+                        <p>Share your story with your readers.</p>
+                    </div>
+                    <div class="top-actions">
+                        <button type="button" id="saveDraftBtn" class="btn btn-draft">Save Draft</button>
+                        <button type="submit" id="publishBtn" class="btn btn-publish">Publish →</button>
+                    </div>
+                </div>
+
+                <!-- Cover image -->
+                <label class="cover-upload" for="coverInput">
+                    <img id="coverPreview" alt="">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+                        <rect x="3" y="4" width="18" height="15" rx="1.5" />
+                        <circle cx="8.5" cy="9.5" r="1.5" />
+                        <path d="M21 15l-5-5-9 9" />
+                    </svg>
+                    <div class="u-title">Upload a cover image</div>
+                    <div class="u-sub">PNG or JPG, recommended 1200×600</div>
+                </label>
+                <input type="file" id="coverInput" accept="image/*">
+
+                <div class="form-card">
+                    <input type="text" id="blogTitle" class="title-input" placeholder="Your blog title..." required>
+                    <div class="field-hint">This will be the main headline of your post</div>
+
+                    <div class="row2">
+                        <div>
+                            <label for="category">Category</label>
+                            <select id="category">
+                                <option value="design">Design</option>
+                                <option value="development">Development</option>
+                                <option value="travel">Travel</option>
+                                <option value="productivity">Productivity</option>
+                                <option value="sports">Sports</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="publishDate">Publish Date</label>
+                            <input type="date" id="publishDate">
+                        </div>
+                    </div>
+
+                    <label for="tagInput">Tags</label>
+                    <div class="tags-input" id="tagsWrap">
+                        <span class="tag-chip">design <span onclick="this.parentElement.remove()">×</span></span>
+                        <span class="tag-chip">ux <span onclick="this.parentElement.remove()">×</span></span>
+                        <input type="text" id="tagInput" placeholder="Add a tag and press Enter">
+                    </div>
+
+                    <div class="toggle-row">
+                        <div class="switch">
+                            <input type="checkbox" id="allowComments" checked>
+                            <div class="slider"></div>
+                        </div>
+                        <div>
+                            <div class="toggle-label">Allow Comments</div>
+                            <div class="toggle-sub">Readers can comment on this post</div>
+                        </div>
+                    </div>
+
+                    <label>Content</label>
+                    <div class="editor">
+                        <div class="toolbar">
+                            <select>
+                                <option>Paragraph</option>
+                                <option>Heading 1</option>
+                                <option>Heading 2</option>
+                            </select>
+                            <div class="tb-sep"></div>
+                            <button type="button" class="tool-btn" style="font-weight:800;">B</button>
+                            <button type="button" class="tool-btn" style="font-style:italic;">I</button>
+                            <button type="button" class="tool-btn" style="text-decoration:underline;">U</button>
+                            <div class="tb-sep"></div>
+                            <button type="button" class="tool-btn">🔗</button>
+                            <button type="button" class="tool-btn">🖼</button>
+                            <button type="button" class="tool-btn">"</button>
+                            <div class="tb-sep"></div>
+                            <button type="button" class="tool-btn">≣</button>
+                            <button type="button" class="tool-btn">1.</button>
+                        </div>
+                        <textarea id="blogContent" placeholder="Start writing your story..."></textarea>
+                    </div>
+                    <div class="word-count" id="wordCount">0 words</div>
+                </div>
+            </form>
+        </main>
+    </div>
+
+
+    <!-- supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- bootsrape js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
+
+    <!-- sweetalert -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- javascript -->
+    <script src="../app.js"></script>
+</body>
+
+</html>
