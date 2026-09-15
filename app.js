@@ -1,5 +1,4 @@
 // Navbar start
-
 const isPages = window.location.pathname.includes("/pages/");
 
 const navbarPath = isPages
@@ -11,14 +10,6 @@ fetch(navbarPath)
     .then(data => {
 
         document.querySelector("#navbar").innerHTML = data;
-
-        // Logo
-        const logo = document.querySelector("#logo");
-
-        logo.src = isPages
-            ? "../image/zarrin-logo.svg"
-            : "./image/zarrin-logo.svg";
-
 
         const loginLink = document.querySelector("#loginLink");
         const signupLink = document.querySelector("#signupLink");
@@ -34,10 +25,9 @@ fetch(navbarPath)
                 ? "./signup.html"
                 : "./pages/signup.html";
         }
-
     });
+// navbar end
 
-// Navbar end
 
 const supabaseUrl = "https://xmexfecjjalkhqtrlzzj.supabase.co";
 const supabaseKey = "sb_publishable_MscDQGxX8gej_btcdCaQjA_6qODt-W8";
