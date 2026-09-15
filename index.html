@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Blog Website</title>
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
     <!-- bootsrap css -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
@@ -14,117 +19,188 @@
 
 <body>
 
-   
+
     <!-- Navbar -->
-     <div id="navbar">
+    <div id="navbar">
         <!-- navbar content -->
     </div>
 
 
     <!-- Hero Section -->
-    <div class="container col-xxl-8 px-4 py-5">
-        <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
-            <div class="col-10 col-sm-8 col-lg-6">
-                <img src="./image/Group 11 1.png" class="d-block mx-lg-auto img-fluid" alt="Bootstrap Themes"
-                    width="700" height="500" loading="lazy" />
-            </div>
-            <div class="col-lg-6">
-                <p class="lead">Hey, I am John</p>
-                <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3">
-                    I create <span class="purple"> product design </span> <br />
-                    and brand experience
-                </h1>
-                <p class="lead">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-                    varius enim in eros elementum tristique.
-                </p>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-start">
-                    <button type="button" class="btn btn-primary btn-lg px-4 me-md-2">
-                        Get In Touch
-                    </button>
-                </div>
-            </div>
+    <section class="hero">
+    <div class="content">
+        <div class="badge">
+            <span class="dot"></span>
+            New articles every week
+        </div>
+        <div class="greeting">Hey, I am John</div>
+        <h1>Stories on <span class="highlight">design, dev</span> and everything between</h1>
+        <p class="desc">A blog about product design, web development, and the occasional detour into travel and life —
+            written from real projects, not theory.</p>
+
+        <div class="subscribe">
+            <input type="email" placeholder="Enter your email">
+            <button class="btn btn-primary">Subscribe</button>
+        </div>
+        <p class="subscribe-note">Join 2,400+ readers. No spam, unsubscribe anytime.</p>
+
+        <div class="categories">
+            <a href="#" class="cat-pill">Design</a>
+            <a href="#" class="cat-pill">Development</a>
+            <a href="#" class="cat-pill">Travel</a>
+            <a href="#" class="cat-pill">Productivity</a>
         </div>
     </div>
 
+    <div class="image-wrap">
+        <div class="blob"></div>
+        <img class="photo" src="./image/Group 11 1.png" alt="John">
+
+        <svg class="sparkle s1" width="26" height="26" viewBox="0 0 24 24" fill="#06B6D4">
+            <path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" />
+        </svg>
+        <svg class="sparkle s2" width="18" height="18" viewBox="0 0 24 24" fill="#6D28D9">
+            <path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" />
+        </svg>
+        <svg class="sparkle s4" width="16" height="16" viewBox="0 0 24 24" fill="#7C3AED">
+            <path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" />
+        </svg>
+
+        <div class="latest-post">
+            <div>
+                <div class="tag">Latest Post</div>
+                <div class="title">Best Website to research for your next project</div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- CARD SECTION -->
     <!-- card1 -->
-    <div class="container py-5">
-        <div class="card-group mb-3 gap-5">
+    <div class="container">
+  <div class="row g-4">
 
-            
-            <div class="card">
-                <img src="./image/easy update.png" class="card-img-top" alt="...">
-                <div class="card-body">
-
-                    <h5 class="card-title">Ahuse</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius
-                        enim in eros.</p>
-                        <a href="#" class="read-more">Read More...</a>
-                </div>
-            </div>
-            
-            <div class="card">
-                <img src="./image/easy update.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">App Dashboard</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius
-                        enim in eros.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./image/easy update.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Easy Rent</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius
-                        enim in eros.</p>
-                </div>
-            </div>
+    <!-- Card 1 -->
+    <div class="col-12 col-md-4">
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80" class="w-100" alt="Train journey">
+        <div class="blog-meta">
+          <span class="category">Travel</span>
+          <span class="date">13 March 2023</span>
         </div>
-
+        <h3 class="blog-title">Train Or Bus Journey? Which one suits?</h3>
+        <p class="blog-desc">The choice between a train or bus journey depends on various factors such as the distance of the journey, the time available, the cost, and person</p>
+        <a href="#" class="read-more">Read More...</a>
+      </div>
     </div>
-    <!-- card2 -->
-    <div class="container py-5">
-        <div class="card-group mb-3 gap-5">
-            <div class="card">
-                <img src="./image/easy update.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Ahuse</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius
-                        enim in eros.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./image/easy update.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">App Dashboard</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius
-                        enim in eros.</p>
-                </div>
-            </div>
-            <div class="card">
-                <img src="./image/easy update.png" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Easy Rent</h5>
-                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius
-                        enim in eros.</p>
-                </div>
-            </div>
+
+    <!-- Card 2 -->
+    <div class="col-12 col-md-4">
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" class="w-100" alt="Laptop with food">
+        <div class="blog-meta">
+          <span class="category">DEVELOPMENT</span>
+          <span class="date">11 March 2023</span>
         </div>
-
+        <h3 class="blog-title">Best Website to research for your next project</h3>
+        <p class="blog-desc">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs</p>
+        <a href="#" class="read-more">Read More...</a>
+      </div>
     </div>
+
+    <!-- Card 3 -->
+    <div class="col-12 col-md-4">
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=800&q=80" class="w-100" alt="Dancer on structure">
+        <div class="blog-meta">
+          <span class="category">Sports</span>
+          <span class="date">10 March 2023</span>
+        </div>
+        <h3 class="blog-title">How to Be a Dancer in 2023 with proper skills?</h3>
+        <p class="blog-desc">Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive</p>
+        <a href="#" class="read-more">Read More...</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<br><br>
+
+<div class="container">
+  <div class="row g-4">
+
+    <!-- Card 1 -->
+    <div class="col-12 col-md-4">
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&q=80" class="w-100" alt="Train journey">
+        <div class="blog-meta">
+          <span class="category">Travel</span>
+          <span class="date">13 March 2023</span>
+        </div>
+        <h3 class="blog-title">Train Or Bus Journey? Which one suits?</h3>
+        <p class="blog-desc">The choice between a train or bus journey depends on various factors such as the distance of the journey, the time available, the cost, and person</p>
+        <a href="#" class="read-more">Read More...</a>
+      </div>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-12 col-md-4">
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" class="w-100" alt="Laptop with food">
+        <div class="blog-meta">
+          <span class="category">DEVELOPMENT</span>
+          <span class="date">11 March 2023</span>
+        </div>
+        <h3 class="blog-title">Best Website to research for your next project</h3>
+        <p class="blog-desc">Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs</p>
+        <a href="#" class="read-more">Read More...</a>
+      </div>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-12 col-md-4">
+      <div class="blog-card">
+        <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=800&q=80" class="w-100" alt="Dancer on structure">
+        <div class="blog-meta">
+          <span class="category">Sports</span>
+          <span class="date">10 March 2023</span>
+        </div>
+        <h3 class="blog-title">How to Be a Dancer in 2023 with proper skills?</h3>
+        <p class="blog-desc">Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment. survival strategies to ensure proactive</p>
+        <a href="#" class="read-more">Read More...</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
 
     <!-- supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
-  
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
     <!-- bootsrape js -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
         crossorigin="anonymous"></script>
 
-         <!-- sweetalert -->
+    <!-- sweetalert -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- javascript -->
     <script src="app.js"></script>
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+
+
+  
+
+

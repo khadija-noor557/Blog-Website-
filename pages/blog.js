@@ -9,7 +9,7 @@ console.log(client);
 
 
 async function savePost(status) {
-  
+
   // getuser
   const { data: { user } } = await client.auth.getUser();
   if (!user) {
@@ -18,17 +18,17 @@ async function savePost(status) {
   }
 
   // ALL tags
-  const tags = [...document.querySelectorAll('.tag-chip')].map(el => el.textContent.replace('x','').trim())
+  const tags = [...document.querySelectorAll('.tag-chip')].map(el => el.textContent.replace('x', '').trim())
 
   // database insertion 
   const { error } = await client
     .from('blog_data')
     .insert([{
-      title: document.getElementById('blogTitle').ariaValueMax.trim(),
+      title: document.getElementById('blogTitle').value.trim(),
       category: document.getElementById('category').value,
-      publish_data: document.getElementById('publishDate').value,
+      publish_date: document.getElementById('publishDate').value,
       tags,
-      allow_comments: document.getElementById('').value.checked,
+      allow_comments: document.getElementById('allowComments').checked,
       content: document.getElementById('blogContent').value,
       status,
       user_id: user.id,
@@ -37,25 +37,26 @@ async function savePost(status) {
 
   if (error) {
     console.log(error.message);
+    Swal.fire({ icon: "error", title: "Failed", text: error.message });
     return;
-    
+
   }
 
   Swal.fire({
-        title: "Registration successful!",
-        icon: "success",
-        draggable: true
-    });
+    title: "Registration successful!",
+    icon: "success",
+    draggable: true
+  });
 
   window.location.href = "dashboard.html";
 
 }
 
 // publish button
-const publishBtn =document.querySelector("#publishBtn")
-publishBtn.addEventListener("submit",(e)=>{
-e.preventDefault()
-savePost('published')
+const publishBtn = document.querySelector("#publishBtn")
+publishBtn.addEventListener("click", (e) => {
+  e.preventDefault()
+  savePost('published')
 })
 
 
@@ -64,7 +65,7 @@ savePost('published')
 
 // save draft button
 const draftBtn = document.querySelector("#saveDraftBtn")
-draftBtn.addEventListener("click",(e)=>{
+draftBtn.addEventListener("click", (e) => {
   e.preventDefault()
   savePost('draft')
 })
