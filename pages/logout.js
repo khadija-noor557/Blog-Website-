@@ -10,9 +10,7 @@ console.log(client);
 
 
 const logOutBtn = document.querySelector("#logoutBtn")
-console.log(logOutBtn)
 logOutBtn.addEventListener("click", async()=>{
-    console.log("running", logOutBtn)
     const { error } = await client.auth.signOut()
 
     if (error) {
