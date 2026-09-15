@@ -112,11 +112,11 @@ console.log("SESSION:", data.session);
         }
 
 
-        Swal.fire({
-        title: "Registration successful!",
-        icon: "success",
-        draggable: true
-    });
+            Swal.fire({
+            title: "Registration successful!",
+            icon: "success",
+            draggable: true
+        });
 
 
     }

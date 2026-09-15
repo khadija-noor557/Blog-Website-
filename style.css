@@ -77,7 +77,9 @@ body{
   animation:fadeUp .6s ease forwards;
 }
 .badge .dot{
-  width:8px;height:8px;border-radius:50%;
+  width:8px;
+  height:8px;
+  border-radius:50%;
   background:#22C55E;
   position:relative;
 }
