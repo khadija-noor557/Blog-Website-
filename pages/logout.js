@@ -44,3 +44,27 @@ async function getUserData() {
 }
 
 getUserData();
+
+
+
+// making responsive dashboard
+
+const sidebar = document.getElementById('sidebar');
+  const overlay = document.getElementById('sidebarOverlay');
+  const menuToggle = document.getElementById('menuToggle');
+
+  function openSidebar(){
+    sidebar.classList.add('open');
+    overlay.classList.add('open');
+  }
+  function closeSidebar(){
+    sidebar.classList.remove('open');
+    overlay.classList.remove('open');
+  }
+
+  menuToggle.addEventListener('click', openSidebar);
+  overlay.addEventListener('click', closeSidebar);
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 950) closeSidebar();
+  });

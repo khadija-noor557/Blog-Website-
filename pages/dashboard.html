@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>My Dashboard</title>
     <!-- google fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,20 +12,21 @@
         href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap"
         rel="stylesheet">
 
-        <!-- dashboard.css -->
-         <link rel="stylesheet" href="dashboard.css">
-    
+    <!-- dashboard.css -->
+    <link rel="stylesheet" href="dashboard.css">
+
 </head>
 
 <body>
 
     <div class="layout">
+        <div class="sidebar-overlay" id="sidebarOverlay"></div>
 
         <!-- Sidebar -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebar">
             <div class="logo">
                 <div><img src="../image/zarrin-logo.svg" alt=""></div>
-                
+
             </div>
             <nav>
                 <a href="#" class="active">
@@ -87,198 +90,209 @@
         <!-- Main -->
         <main>
             <div class="topbar">
-                <div>
-                    <h1>Welcome back, <span id="userName"></span> 👋</h1>
-                    <p>Here's what you've been reading lately.</p>
-                </div>
                 <div style="display:flex; align-items:center; gap:14px;">
-                    <div class="search-box">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF" stroke-width="2">
-                            <circle cx="11" cy="11" r="7" />
-                            <path d="M21 21l-4-4" />
+                    <button class="menu-toggle" id="menuToggle" aria-label="Open menu">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M3 12h18M3 6h18M3 18h18" />
                         </svg>
-                        <input type="text" placeholder="Search saved posts...">
+                    </button>
+                    <div>
+                        <h1>Welcome back, <span id="userName"></span> 👋</h1>
+                        <p>Here's what you've been reading lately.</p>
                     </div>
-                    <a href="blogs.html" class="write-btn">
-                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                            stroke-width="2">
-                            <path d="M12 20h9" />
-                            <path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
-                        </svg>
-                        Write a Blog
+                    </div>
+                    <div style="display:flex; align-items:center; gap:14px;">
+                        <div class="search-box">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#9CA3AF"
+                                stroke-width="2">
+                                <circle cx="11" cy="11" r="7" />
+                                <path d="M21 21l-4-4" />
+                            </svg>
+                            <input type="text" placeholder="Search saved posts...">
+                        </div>
+                        <a href="blogs.html" class="write-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="2">
+                                <path d="M12 20h9" />
+                                <path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4L16.5 3.5z" />
+                            </svg>
+                            Write a Blog
+                        </a>
+                    </div>
+                </div>
+
+                <div class="profile-card" id="userDashboard">
+
+                    <div class="profile-info">
+                        <h2><span id="Name"></span></h2>
+                        <p><span id="userEmail"></span></p>
+                    </div>
+                    <button class="edit-btn">Edit Profile</button>
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <div class="stat-icon icon-purple">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M6 3h12v18l-6-4-6 4V3z" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="stat-num">14</div>
+                            <div class="stat-label">Saved Posts</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-teal">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="9" />
+                                <path d="M12 7v5l3 3" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="stat-num">32</div>
+                            <div class="stat-label">Articles Read</div>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon icon-green">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M12 2v20M2 12h20" />
+                            </svg>
+                        </div>
+                        <div>
+                            <div class="stat-num">5</div>
+                            <div class="stat-label">Comments Posted</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section-head">
+                    <h3>My Blogs</h3>
+                    <a href="blogs.html">+ New Post</a>
+                </div>
+                <div class="posts-grid" style="margin-bottom:34px;">
+                    <a href="blogs.html" class="post-card"
+                        style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none; color:var(--muted); min-height:200px; border:2px dashed var(--border); background:#fafafd;">
+                        <div
+                            style="width:44px;height:44px;border-radius:50%;background:#F3F0FF;display:flex;align-items:center;justify-content:center;margin-bottom:10px;">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6D28D9"
+                                stroke-width="2">
+                                <path d="M12 5v14M5 12h14" />
+                            </svg>
+                        </div>
+                        <div style="font-weight:700; font-size:13.5px; color:var(--ink);">Write a new blog</div>
+                        <div style="font-size:12px; margin-top:2px;">Share something with your readers</div>
                     </a>
-                </div>
-            </div>
 
-            <div class="profile-card" id="userDashboard">
-                
-                <div class="profile-info">
-                    <h2><span id="Name"></span></h2>
-                    <p><span id="userEmail"></span></p>
-                </div>
-                <button class="edit-btn">Edit Profile</button>
-            </div>
+                    <div class="post-card">
+                        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&q=80" alt="">
+                        <div class="post-body">
+                            <div class="post-cat">Design</div>
+                            <div class="post-title">Why Whitespace Is the Most Underrated Design Tool</div>
+                            <div
+                                style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+                                <span class="progress-pill" style="background:#ECFDF3; color:#16A34A;">Published</span>
+                                <span style="font-size:11.5px; color:var(--muted);">243 views</span>
+                            </div>
+                        </div>
+                    </div>
 
-            <div class="stats-row">
-                <div class="stat-card">
-                    <div class="stat-icon icon-purple">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M6 3h12v18l-6-4-6 4V3z" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="stat-num">14</div>
-                        <div class="stat-label">Saved Posts</div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon icon-teal">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="9" />
-                            <path d="M12 7v5l3 3" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="stat-num">32</div>
-                        <div class="stat-label">Articles Read</div>
-                    </div>
-                </div>
-                <div class="stat-card">
-                    <div class="stat-icon icon-green">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M12 2v20M2 12h20" />
-                        </svg>
-                    </div>
-                    <div>
-                        <div class="stat-num">5</div>
-                        <div class="stat-label">Comments Posted</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-head">
-                <h3>My Blogs</h3>
-                <a href="blogs.html">+ New Post</a>
-            </div>
-            <div class="posts-grid" style="margin-bottom:34px;">
-                <a href="blogs.html" class="post-card"
-                    style="display:flex; flex-direction:column; align-items:center; justify-content:center; text-decoration:none; color:var(--muted); min-height:200px; border:2px dashed var(--border); background:#fafafd;">
-                    <div
-                        style="width:44px;height:44px;border-radius:50%;background:#F3F0FF;display:flex;align-items:center;justify-content:center;margin-bottom:10px;">
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#6D28D9" stroke-width="2">
-                            <path d="M12 5v14M5 12h14" />
-                        </svg>
-                    </div>
-                    <div style="font-weight:700; font-size:13.5px; color:var(--ink);">Write a new blog</div>
-                    <div style="font-size:12px; margin-top:2px;">Share something with your readers</div>
-                </a>
-
-                <div class="post-card">
-                    <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=400&q=80" alt="">
-                    <div class="post-body">
-                        <div class="post-cat">Design</div>
-                        <div class="post-title">Why Whitespace Is the Most Underrated Design Tool</div>
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
-                            <span class="progress-pill" style="background:#ECFDF3; color:#16A34A;">Published</span>
-                            <span style="font-size:11.5px; color:var(--muted);">243 views</span>
+                    <div class="post-card">
+                        <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&q=80" alt="">
+                        <div class="post-body">
+                            <div class="post-cat">Productivity</div>
+                            <div class="post-title">The 2-Hour Rule: A Simple Trick to Beat Procrastination</div>
+                            <div
+                                style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+                                <span class="progress-pill" style="background:#FEF3C7; color:#B45309;">Draft</span>
+                                <span style="font-size:11.5px; color:var(--muted);">Not published</span>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="post-card">
-                    <img src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?w=400&q=80" alt="">
-                    <div class="post-body">
-                        <div class="post-cat">Productivity</div>
-                        <div class="post-title">The 2-Hour Rule: A Simple Trick to Beat Procrastination</div>
-                        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
-                            <span class="progress-pill" style="background:#FEF3C7; color:#B45309;">Draft</span>
-                            <span style="font-size:11.5px; color:var(--muted);">Not published</span>
+                <div class="section-head">
+                    <h3>Saved Posts</h3>
+                    <a href="#">View all</a>
+                </div>
+                <div class="posts-grid">
+                    <div class="post-card">
+                        <div class="bookmark">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 3h12v18l-6-4-6 4V3z" />
+                            </svg>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&q=80" alt="Train">
+                        <div class="post-body">
+                            <div class="post-cat">Travel</div>
+                            <div class="post-title">Train Or Bus Journey? Which one suits?</div>
+                        </div>
+                    </div>
+                    <div class="post-card">
+                        <div class="bookmark">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 3h12v18l-6-4-6 4V3z" />
+                            </svg>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80" alt="Laptop">
+                        <div class="post-body">
+                            <div class="post-cat">Development</div>
+                            <div class="post-title">Best Website to research for your next project</div>
+                        </div>
+                    </div>
+                    <div class="post-card">
+                        <div class="bookmark">
+                            <svg viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M6 3h12v18l-6-4-6 4V3z" />
+                            </svg>
+                        </div>
+                        <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=400&q=80" alt="Dancer">
+                        <div class="post-body">
+                            <div class="post-cat">Sports</div>
+                            <div class="post-title">How to Be a Dancer in 2023 with proper skills?</div>
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="section-head">
-                <h3>Saved Posts</h3>
-                <a href="#">View all</a>
-            </div>
-            <div class="posts-grid">
-                <div class="post-card">
-                    <div class="bookmark">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M6 3h12v18l-6-4-6 4V3z" />
-                        </svg>
+                <div class="section-head">
+                    <h3>Continue Reading</h3>
+                    <a href="#">View history</a>
+                </div>
+                <div class="history-list">
+                    <div class="history-item">
+                        <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=100&q=80" alt="">
+                        <div class="history-info">
+                            <div class="h-title">Best Website to research for your next project</div>
+                            <div class="h-meta">Development · 11 March 2023</div>
+                        </div>
+                        <span class="progress-pill">80% read</span>
                     </div>
-                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=400&q=80" alt="Train">
-                    <div class="post-body">
-                        <div class="post-cat">Travel</div>
-                        <div class="post-title">Train Or Bus Journey? Which one suits?</div>
+                    <div class="history-item">
+                        <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=100&q=80" alt="">
+                        <div class="history-info">
+                            <div class="h-title">Train Or Bus Journey? Which one suits?</div>
+                            <div class="h-meta">Travel · 13 March 2023</div>
+                        </div>
+                        <span class="progress-pill">100% read</span>
+                    </div>
+                    <div class="history-item">
+                        <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=100&q=80" alt="">
+                        <div class="history-info">
+                            <div class="h-title">How to Be a Dancer in 2023 with proper skills?</div>
+                            <div class="h-meta">Sports · 10 March 2023</div>
+                        </div>
+                        <span class="progress-pill">45% read</span>
                     </div>
                 </div>
-                <div class="post-card">
-                    <div class="bookmark">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M6 3h12v18l-6-4-6 4V3z" />
-                        </svg>
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400&q=80" alt="Laptop">
-                    <div class="post-body">
-                        <div class="post-cat">Development</div>
-                        <div class="post-title">Best Website to research for your next project</div>
-                    </div>
-                </div>
-                <div class="post-card">
-                    <div class="bookmark">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M6 3h12v18l-6-4-6 4V3z" />
-                        </svg>
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=400&q=80" alt="Dancer">
-                    <div class="post-body">
-                        <div class="post-cat">Sports</div>
-                        <div class="post-title">How to Be a Dancer in 2023 with proper skills?</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="section-head">
-                <h3>Continue Reading</h3>
-                <a href="#">View history</a>
-            </div>
-            <div class="history-list">
-                <div class="history-item">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=100&q=80" alt="">
-                    <div class="history-info">
-                        <div class="h-title">Best Website to research for your next project</div>
-                        <div class="h-meta">Development · 11 March 2023</div>
-                    </div>
-                    <span class="progress-pill">80% read</span>
-                </div>
-                <div class="history-item">
-                    <img src="https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=100&q=80" alt="">
-                    <div class="history-info">
-                        <div class="h-title">Train Or Bus Journey? Which one suits?</div>
-                        <div class="h-meta">Travel · 13 March 2023</div>
-                    </div>
-                    <span class="progress-pill">100% read</span>
-                </div>
-                <div class="history-item">
-                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?w=100&q=80" alt="">
-                    <div class="history-info">
-                        <div class="h-title">How to Be a Dancer in 2023 with proper skills?</div>
-                        <div class="h-meta">Sports · 10 March 2023</div>
-                    </div>
-                    <span class="progress-pill">45% read</span>
-                </div>
-            </div>
 
         </main>
     </div>
 
-     <!-- supabase -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <!-- supabase -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
-  <!-- javascript -->
+    <!-- javascript -->
     <script src="logout.js"></script>
 
 </body>
