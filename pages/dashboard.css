@@ -346,6 +346,7 @@ main {
     border-radius: 14px;
     overflow: hidden;
     transition: .2s ease;
+    
 }
 
 .post-card:hover {

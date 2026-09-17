@@ -101,6 +101,7 @@ if (window.location.pathname.endsWith("/dashboard.html")) {
         card.className = 'post-card dynamic';
 
         card.innerHTML = `
+         
           <img src="${blogPost.image_url || 'https://placehold.co/400x220/EEE/999?text=No+Image'}"
                alt="${blogPost.title || ''}"
                onerror="this.src='https://placehold.co/400x220/EEE/999?text=No+Image'">
@@ -121,6 +122,7 @@ if (window.location.pathname.endsWith("/dashboard.html")) {
               </button>
             </div>
           </div>
+         
         `;
 
         blogData.appendChild(card);
