@@ -64,6 +64,7 @@ nav a {
     font-size: 14.5px;
     margin-bottom: 4px;
     transition: .15s ease;
+    min-height: 44px; /* touch-friendly tap target */
 }
 
 nav a svg {
@@ -96,6 +97,7 @@ nav a.active {
     border-radius: 6px;
     font-size: 14px;
     cursor: pointer;
+    min-height: 40px;
 }
 
 #logoutBtn:hover {
@@ -105,6 +107,9 @@ nav a.active {
 /* --- Main --- */
 main {
     padding: 34px 44px;
+    max-width: 1440px;   /* content ko bohot wide monitors pe stretch hone se roka */
+    margin: 0 auto;
+    width: 100%;
 }
 
 .topbar {
@@ -112,11 +117,12 @@ main {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 30px;
+    gap: 16px;
 }
 
 .topbar h1 {
     font-family: 'Plus Jakarta Sans', sans-serif;
-    font-size: 24px;
+    font-size: clamp(20px, 2.2vw, 24px);
     margin: 0;
 }
 
@@ -135,6 +141,7 @@ main {
     border-radius: 10px;
     padding: 9px 14px;
     width: 260px;
+    flex-shrink: 0;
 }
 
 .search-box input {
@@ -148,6 +155,7 @@ main {
 .write-btn {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 8px;
     background: linear-gradient(90deg, var(--purple) 0%, var(--purple-light) 100%);
     color: #fff;
@@ -159,6 +167,7 @@ main {
     white-space: nowrap;
     box-shadow: 0 6px 16px rgba(109, 40, 217, .25);
     transition: transform .15s ease, box-shadow .15s ease;
+    min-height: 44px;
 }
 
 .write-btn:hover {
@@ -198,10 +207,12 @@ main {
     object-fit: cover;
     border: 3px solid rgba(255, 255, 255, .5);
     z-index: 1;
+    flex-shrink: 0;
 }
 
 .profile-info {
     z-index: 1;
+    min-width: 0; /* text truncate/wrap sahi se ho, overflow na ho */
 }
 
 .profile-info h2 {
@@ -214,6 +225,7 @@ main {
     margin: 0;
     opacity: .9;
     font-size: 13.5px;
+    word-break: break-word;
 }
 
 .edit-btn {
@@ -228,6 +240,8 @@ main {
     font-weight: 600;
     cursor: pointer;
     backdrop-filter: blur(4px);
+    min-height: 40px;
+    flex-shrink: 0;
 }
 
 .edit-btn:hover {
@@ -250,6 +264,7 @@ main {
     display: flex;
     align-items: center;
     gap: 14px;
+    min-width: 0;
 }
 
 .stat-icon {
@@ -301,6 +316,7 @@ main {
     justify-content: space-between;
     align-items: center;
     margin-bottom: 16px;
+    gap: 12px;
 }
 
 .section-head h3 {
@@ -314,6 +330,7 @@ main {
     color: var(--purple);
     font-weight: 600;
     text-decoration: none;
+    flex-shrink: 0;
 }
 
 .posts-grid {
@@ -340,6 +357,7 @@ main {
     width: 100%;
     height: 130px;
     object-fit: cover;
+    display: block;
 }
 
 .post-body {
@@ -408,10 +426,12 @@ main {
     height: 52px;
     border-radius: 10px;
     object-fit: cover;
+    flex-shrink: 0;
 }
 
 .history-info {
     flex: 1;
+    min-width: 0;
 }
 
 .history-info .h-title {
@@ -432,6 +452,7 @@ main {
     border-radius: 999px;
     background: #ECFDF3;
     color: #16A34A;
+    flex-shrink: 0;
 }
 
 /* --- Mobile hamburger button (hidden on desktop) --- */
@@ -440,8 +461,8 @@ main {
     background: #fff;
     border: 1px solid var(--border);
     border-radius: 8px;
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
     align-items: center;
     justify-content: center;
     cursor: pointer;
@@ -466,12 +487,38 @@ main {
     display: block;
 }
 
+/* =========================================================
+   BREAKPOINT 1: Large screens (1440px+) — thoda zyada breathing room
+   ========================================================= */
+@media (min-width: 1440px) {
+    main {
+        padding: 44px 60px;
+    }
+}
+
+/* =========================================================
+   BREAKPOINT 2: Small laptops / large tablets (1100px se neeche)
+   Sidebar thoda narrow, main padding kam
+   ========================================================= */
+@media (max-width: 1100px) {
+    .layout {
+        grid-template-columns: 220px 1fr;
+    }
+    main {
+        padding: 28px 30px;
+    }
+    
+}
+
+/* =========================================================
+   BREAKPOINT 3: Tablet aur neeche (950px) — sidebar drawer ban jati hai
+   ========================================================= */
 @media (max-width: 950px) {
     .layout {
         grid-template-columns: 1fr;
     }
 
-    /* Sidebar becomes an off-canvas drawer instead of just disappearing */
+    /* Sidebar off-canvas drawer */
     .sidebar {
         position: fixed;
         top: 0;
@@ -511,9 +558,29 @@ main {
     }
 }
 
+/* =========================================================
+   BREAKPOINT 4: Small tablets / large phones (768px)
+   ========================================================= */
+@media (max-width: 768px) {
+    main {
+        padding: 22px 20px;
+    }
+
+    .profile-card {
+        padding: 24px;
+    }
+
+    .stat-card {
+        padding: 16px 18px;
+    }
+}
+
+/* =========================================================
+   BREAKPOINT 5: Mobile phones (640px)
+   ========================================================= */
 @media (max-width: 640px) {
     main {
-        padding: 20px 18px;
+        padding: 18px 16px;
     }
 
     .topbar {
@@ -531,19 +598,18 @@ main {
 
     .write-btn {
         width: 100%;
-        justify-content: center;
     }
 
     .profile-card {
         flex-direction: column;
         align-items: flex-start;
         text-align: left;
-        padding: 22px;
+        padding: 20px;
+        gap: 14px;
     }
 
     .edit-btn {
         margin-left: 0;
-        margin-top: 6px;
     }
 
     .stats-row,
@@ -553,5 +619,41 @@ main {
 
     .history-item {
         flex-wrap: wrap;
+    }
+
+    .progress-pill {
+        margin-left: auto;
+    }
+}
+
+/* =========================================================
+   BREAKPOINT 6: Chhoti phones (380px aur usse neeche)
+   ========================================================= */
+@media (max-width: 380px) {
+    .avatar {
+        width: 56px;
+        height: 56px;
+    }
+
+    .profile-info h2 {
+        font-size: 17px;
+    }
+
+    .stat-icon {
+        width: 36px;
+        height: 36px;
+    }
+
+    .stat-num {
+        font-size: 18px;
+    }
+
+    .post-card img {
+        height: 110px;
+    }
+
+    .history-item img {
+        width: 44px;
+        height: 44px;
     }
 }

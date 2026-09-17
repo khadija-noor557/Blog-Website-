@@ -101,7 +101,7 @@ console.log("SESSION:", data.session);
 
         // Database Insertions
         const { error: databaseError } = await client
-            .from("blog_data")
+            .from("blogs_data")
             .insert({
                 name: name
             });

@@ -1,8 +1,4 @@
 
-
-
-
-
 const supabaseUrl = "https://xmexfecjjalkhqtrlzzj.supabase.co";
 const supabaseKey = "sb_publishable_MscDQGxX8gej_btcdCaQjA_6qODt-W8";
 
@@ -26,7 +22,7 @@ async function uploadCoverImage(file, userId) {
         return null;
     }
 
-    const { data } = client.storage.from("post-images").getPublicUrl(path);
+    const { data } = client.storage.from("images").getPublicUrl(path);
     return data.publicUrl;   // ye URL hi database mein save hoga
 }
 
